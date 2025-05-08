@@ -1,4 +1,5 @@
 🧸 muwusic widget for notion
+
 _needed a notion widget that displays date/time and plays comfi beats ~ spent the whole day making this instead of organizing my notion page_
 
 ~ ~ ♡ ~ stream comfi beats ~ ♡ ~ ~
