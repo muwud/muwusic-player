@@ -99,8 +99,8 @@ body.embedded .widget {
 }
 
 body.embedded .player {
-    background-color: transparent;
-    box-shadow: none;
+    background-color: #fff; /* solid background for widget */
+    box-shadow: 0 2px 8px rgba(35, 55, 77, 0.15); /* keep shadow for the player */
 }
 
 /* progress bar */
@@ -193,7 +193,6 @@ body.embedded .player {
     justify-content: center;
 }
 
-
 #play {
     background: none;
     border: none;
@@ -230,15 +229,13 @@ body.embedded .player {
     left: -30px;
 }
 
-
-
 /* focus outlines for accessibility */
 .player input[type="range"]:focus,
 .controls button:focus {
     outline: 2px dashed #bfccf0;
 }
 
-/* YouTube iframe hidden */
+/* youTube iframe hidden */
 #youtube-player {
     display: none;
 }

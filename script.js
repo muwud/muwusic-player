@@ -102,114 +102,47 @@ function onYouTubeIframeAPIReady() {
 
 // player ready
 function onPlayerReady(event) {
-    player.setVolume(currentVolume);
-    document.getElementById("volume").value = currentVolume;
-    player.loadVideoById(shuffledPlaylist[currentVideoIndex]);
+    event.target.loadVideoById(shuffledPlaylist[currentVideoIndex]);
 }
 
-// track progress bar as song plays
-const progressBar = document.getElementById('progress-bar');
-progressBar.value = 0;
-
-// --- Initialize play icon position ---
-const playBtn = document.getElementById('play');
-const playIcon = playBtn.querySelector('img');  // Ensure playIcon is initialized before use
-playIcon.style.left = "0px";  // Set the icon to the left at initial load
-
-function updateProgress() {
-    if (player && player.getDuration && player.getCurrentTime) {
-        const duration = player.getDuration();
-        const currentTime = player.getCurrentTime();
-        
-        if (!isNaN(duration) && duration > 0) {
-            progressBar.value = (currentTime / duration) * 100;
-            
-            // Update the play icon's position based on progress bar
-            const iconPosition = (progressBar.value / 100) * progressBar.offsetWidth;
-            playIcon.style.left = `${iconPosition}px`;
-        }
-
-        progressAnimation = requestAnimationFrame(() => {
-            if (player.getPlayerState() === YT.PlayerState.PLAYING) {
-                updateProgress();
-            }
-        });
-    }
-}
-
-// player state change handler
+// player state change
 function onPlayerStateChange(event) {
-    if (event.data === YT.PlayerState.PLAYING) {
-        isPlaying = true;
-        playIcon.src = 'icons/pause.png';
-        playIcon.alt = 'Pause';
-        cancelAnimationFrame(progressAnimation);
-        updateProgress();
-    } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
-        isPlaying = false;
-        playIcon.src = 'icons/play.png';
-        playIcon.alt = 'Play';
-        cancelAnimationFrame(progressAnimation);  // Stop animation when paused or ended
-    }
-
     if (event.data === YT.PlayerState.ENDED) {
-        playNextVideo();
+        nextVideo();
     }
 }
 
-progressBar.addEventListener('input', (e) => {
-    const duration = player.getDuration();
-    const seekTo = (e.target.value / 100) * duration;
-    player.seekTo(seekTo, true);
-});
+// --- video controls ---
+function togglePlayPause() {
+    if (isPlaying) {
+        player.pauseVideo();
+    } else {
+        player.playVideo();
+    }
+    isPlaying = !isPlaying;
+}
 
-// --- shuffle playlist ---
-function playNextVideo() {
+function nextVideo() {
     currentVideoIndex = (currentVideoIndex + 1) % shuffledPlaylist.length;
     player.loadVideoById(shuffledPlaylist[currentVideoIndex]);
 }
 
-function playPreviousVideo() {
+function prevVideo() {
     currentVideoIndex = (currentVideoIndex - 1 + shuffledPlaylist.length) % shuffledPlaylist.length;
     player.loadVideoById(shuffledPlaylist[currentVideoIndex]);
 }
 
-// load youtube api
-const tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-document.body.appendChild(tag);
+function setVolume() {
+    player.setVolume(currentVolume);
+}
 
-// controls (added event listeners directly here)
-document.addEventListener("DOMContentLoaded", () => {
-    // play/pause button
-    playBtn.addEventListener('click', () => {
-        if (player.getPlayerState() === YT.PlayerState.PLAYING) {
-            player.pauseVideo();
-        } else {
-            player.playVideo();
-        }
-    });
+function handleVolumeChange(event) {
+    currentVolume = event.target.value;
+    setVolume();
+}
 
-    // previous button
-    document.getElementById("prev").addEventListener("click", () => {
-        playPreviousVideo();
-    });
-
-    // next button
-    document.getElementById("next").addEventListener("click", () => {
-        playNextVideo();
-    });
-
-    // volume control
-    document.getElementById("volume").addEventListener("input", (e) => {
-        currentVolume = e.target.value;
-        player.setVolume(currentVolume);
-    });
-
-    // progress bar control
-    progressBar.addEventListener('input', (e) => {
-        const duration = player.getDuration();
-        const seekTo = (e.target.value / 100) * duration;
-        player.seekTo(seekTo, true);
-    });
-});
+// --- add event listeners ---
+document.getElementById("play").addEventListener("click", togglePlayPause);
+document.getElementById("next").addEventListener("click", nextVideo);
+document.getElementById("prev").addEventListener("click", prevVideo);
+document.getElementById("volume").addEventListener("input", handleVolumeChange);

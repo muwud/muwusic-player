@@ -39,12 +39,13 @@
                 <div class="controls">
                         <button id="prev">
                             <img src="icons/prev.png" alt="prev" />
-                    </button>
+                        </button>
 
                     <div class="play-wrapper">
                         <button id="play">
                             <img src="icons/play.png" alt="play" id="play-icon" />
                         </button>
+                        <!-- sparkle effects -->
                         <img src="icons/sparkle.png" alt="sparkle" class="sparkle sparkle-top-right" />
                         <img src="icons/sparkle.png" alt="sparkle" class="sparkle sparkle-bottom-left" />
                     </div>
@@ -57,6 +58,7 @@
                 <!-- volume slider -->
                 <input type="range" id="volume" min="0" max="100" value="50" />
             </div>
+        </div> <!-- end of widget container -->
 
         <!-- hidden youtube iframe -->
         <div id="youtube-player"></div>
@@ -64,6 +66,7 @@
         <!-- scripts -->
         <script src="script.js"></script>
         <script>
+            // check if the page is embedded and add embedded class to body
             if (window.self !== window.top) {
                 document.body.classList.add('embedded');
             }
