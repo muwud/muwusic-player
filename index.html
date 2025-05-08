@@ -6,8 +6,8 @@
         <title>muwusic</title>
 
         <!-- fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+        
         <!-- styles -->
         <link rel="stylesheet" href="style.css" />
     </head>
@@ -37,15 +37,26 @@
 
                 <!-- controls -->
                 <div class="controls">
-                    <button id="prev"><img src="icons/prev.png" alt="prev" /></button>
-                    <button id="play"><img src="icons/play.png" alt="play" /></button>
-                    <button id="next"><img src="icons/skip.png" alt="next" /></button>         
+                        <button id="prev">
+                            <img src="icons/prev.png" alt="prev" />
+                    </button>
+
+                    <div class="play-wrapper">
+                        <button id="play">
+                            <img src="icons/play.png" alt="play" id="play-icon" />
+                        </button>
+                        <img src="icons/sparkle.png" alt="sparkle" class="sparkle sparkle-top-right" />
+                        <img src="icons/sparkle.png" alt="sparkle" class="sparkle sparkle-bottom-left" />
+                    </div>
+
+                    <button id="next">
+                        <img src="icons/skip.png" alt="next" />
+                    </button>
                 </div>
 
-                <!-- volume controls -->
+                <!-- volume slider -->
                 <input type="range" id="volume" min="0" max="100" value="50" />
             </div>
-        </div>
 
         <!-- hidden youtube iframe -->
         <div id="youtube-player"></div>

@@ -2,17 +2,22 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Baloo 2', cursive;
+    font-family: 'Fredoka', cursive;
     height: 100%;
-    background: #c9d6f0;
+    background: #dae6ff;
     overflow: hidden;
     background-image: url('assets/background_img.jpg');
-    background-size: center;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-/* blurred background img */
+body.embedded {
+    background: transparent;
+    background-image: none;
+}
+
+/* blurred background */
 .background {
     position: fixed;
     top: 0;
@@ -26,9 +31,14 @@ body, html {
     z-index: -2;
 }
 
-/* centered content container */
+body.embedded .background {
+    display: none;
+}
+
+/* responsive widget */
 .widget {
-    max-width: 400px;
+    width: 90%;
+    max-width: 500px; /* larger on site, scales down */
     margin: auto;
     padding: 20px;
     border-radius: 24px;
@@ -38,15 +48,19 @@ body, html {
     align-items: center;
 }
 
+body.embedded .widget {
+    max-width: 350px;
+    padding: 10px;
+}
+
 /* gif container w rounded corners */
 .gif-container {
-    position: relative;
     width: 100%;
     border-radius: 24px;
     overflow: hidden;
+    position: relative;
 }
 
-/* responsive gif */
 .comfy-gif {
     width: 100%;
     height: auto;
@@ -61,62 +75,59 @@ body, html {
     top: 10%;
     left: 10%;
     color: rgb(243, 249, 255);
-    text-shadow: 1px 1px 5px rgb(34, 37, 55);
+    text-shadow: 1px 1px 5px rgb(107, 106, 160);
     font-size: 2rem;
 }
 
-/* add spacing between date/time */
 .datetime #date,
 .datetime #time {
-    margin: 4px 0;
+    margin: 2px 0;
 }
 
-/* player below the gif */
+/* player section */
 .player {
     background-color: rgb(243, 249, 255);
     border-radius: 24px;
     width: 100%;
-    padding: 30px 4px;
-    margin-top: 30px;
+    padding: 24px 2px;
+    margin-top: 20px;
     box-shadow: 0 2px 8px rgba(35, 55, 77, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+}
+
+body.embedded .player {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* progress bar */
+#progress-bar {
+    height: 6px;
+    width: 80%;
+    margin: 8px 0;
+}
+
+#volume {
+    width: 40%;
+    height: 4px;
+    margin: 8px 0;
 }
 
 .player input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 80%;
-    height: 6px;
     background: #bfccf0;
     border-radius: 5px;
-    outline: none;
     cursor: pointer;
-} 
-
-#progress-bar,
-#volume {
-    margin: 8px 0;
-}
-
-#progress-bar {
-    height: 6px;
-    width: 80%;
-}
-
-#volume {
-    margin-top: 8px;
-    margin-bottom: 10px;
-    width: 40%;
-    height: 4px;
 }
 
 .player input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    height: 80px;
-    width: 80px;
+    height: 64px;
+    width: 64px;
     background: url('icons/dot.png') no-repeat center;
     background-size: contain;
     border: none;
@@ -124,8 +135,8 @@ body, html {
 }
 
 .player input[type="range"]::-moz-range-thumb {
-    height: 80px;
-    width: 80px;
+    height: 64px;
+    width: 64px;
     background: url('icons/dot.png') no-repeat center;
     background-size: contain;
     border: none;
@@ -137,8 +148,9 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 60px;
+    gap: 80px;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .controls button {
@@ -146,15 +158,14 @@ body, html {
     border: none;
     padding: 0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.controls button img {
-    display: block;
-}
-
+/* icon sizes */
 .controls img {
-    width: 30px;
-    height: 30px;
+    width: 28px;
     opacity: 0.7;
     transition: opacity 0.3s ease;
 }
@@ -164,71 +175,70 @@ body, html {
 }
 
 #play img {
-    width: 110px;
-    height: 110px;
-}
-
-#pause img {
-    width: 200px; 
-    height: 130px; 
+    width: 53px;
 }
 
 #prev img,
 #next img {
-    width: 32px;
-    height: 32px;
+    width: 35px;
 }
 
-#youtube-player {
-    display: none;
+/* sparkles */
+.play-wrapper {
+    position: relative;
+    width: 80px;  
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.player input[type="range"]:focus {
-    outline: 2px solid #bfccf0;
+
+#play {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
 }
 
+#play-icon {
+    width: 100%;
+    height: auto;
+}
+
+.sparkle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sparkle-top-right {
+    top: 8px;
+    right: -20px;
+}
+
+.sparkle-bottom-left {
+    bottom: 1px;
+    left: -30px;
+}
+
+
+
+/* focus outlines for accessibility */
+.player input[type="range"]:focus,
 .controls button:focus {
     outline: 2px dashed #bfccf0;
 }
 
-/* ========= embedded widget styles ========= */
-body.embedded .widget {
-    max-width: 260px;
-    padding: 12px;
-    box-shadow: none;
-}
-
-body.embedded .comfy-gif {
-    border-radius: 16px;
-}
-
-body.embedded .datetime {
-    font-size: 1.2rem;
-    top: 8%;
-    left: 8%;
-}
-
-body.embedded .player {
-    padding: 16px 4px;
-    gap: 8px;
-}
-
-body.embedded #play img {
-    width: 60px;
-    height: 60px;
-}
-
-body.embedded #prev img,
-body.embedded #next img {
-    width: 24px;
-    height: 24px;
-}
-
-body.embedded input[type="range"] {
-    width: 70% !important;
-}
-
-body.embedded #volume {
-    width: 35%;
-    height: 3px;
+/* YouTube iframe hidden */
+#youtube-player {
+    display: none;
 }
