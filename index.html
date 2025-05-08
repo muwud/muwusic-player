@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>muwusic</title>
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- background img -->
+         <div class="background"></div>
+
+        <!-- main widget container -->
+         <div class="widget">
+            <!-- gif display area -->
+             <div class="gif-container">
+                <img src="assets/blue_gif.gif" alt="comfy gif" class="comfy-gif" />
+                <!-- overlay date/ time -->
+                 <div class="datetime"> 
+                    <div id="date"></div>
+                    <div id="time"></div>
+                 </div>
+             </div>
+
+        <!-- music player -->
+        <div class="player">
+            <!-- progress bar -->
+             <input type="range" id="progress-bar" min="0" max="100" value="0" />
+
+            <!-- controls -->
+            <div class="controls">
+                <button id="prev"><img src="icons/prev.png" alt="prev" /></button>
+                <button id="play"><img src="icons/play.png" alt="play" /></button>
+                <button id="next"><img src="icons/skip.png" alt="next" /></button>         
+         </div>
+
+         <!-- volume controls -->
+         <input type="range" id="volume" min="0" max="100" value="50" />
+        </div>
+        </div>
+
+        <!-- hidden youtube iframe -->
+         <div id="youtube-player"></div>
+
+         <script src="script.js"></script>
+
+    </body>
+</html>
