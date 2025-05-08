@@ -33,7 +33,7 @@ _needed a notion widget that displays date/time and plays comfi beats ~ spent th
 
 🧡 credit
 
-built by DailyMuwud
+built by DailyMuwud♡ 
 
 music: songs by Comfi Beats, LilyPichu
  _(all rights belong to the original musician. this widget only embeds the publicly available youtube videos)_
