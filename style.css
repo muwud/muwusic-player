@@ -2,7 +2,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', sans-serif;
     height: 100%;
     background: #dae6ff;
     overflow: hidden;
@@ -77,6 +77,7 @@ body.embedded .widget {
     color: rgb(243, 249, 255);
     text-shadow: 1px 1px 5px rgb(107, 106, 160);
     font-size: 2rem;
+    font-family: 'Fredoka', sans-serif;
 }
 
 .datetime #date,
@@ -89,7 +90,7 @@ body.embedded .widget {
     background-color: rgb(243, 249, 255);
     border-radius: 24px;
     width: 100%;
-    padding: 24px 2px;
+    padding: 34px 2px;
     margin-top: 20px;
     box-shadow: 0 2px 8px rgba(35, 55, 77, 0.15);
     display: flex;
@@ -183,50 +184,58 @@ body.embedded .player {
     width: 35px;
 }
 
-/* sparkles */
-.play-wrapper {
+/* sparkle animations */
+@keyframes sparkle-animation {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.6);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(0.6);
+    }
+}
+
+.sparkle-container {
     position: relative;
-    width: 80px;  
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#play {
-    background: none;
-    border: none;
-    padding: 0;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2;
-}
-
-#play-icon {
-    width: 100%;
-    height: auto;
-}
-
-.sparkle {
-    position: absolute;
-    width: 20px;
-    height: 20px;
     pointer-events: none;
     z-index: 1;
 }
 
+.sparkle {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background-color: #dae6ff;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sparkle.sparkling {
+    display: block;
+    animation: sparkle-animation 1.5s infinite ease-in-out;
+}
+
 .sparkle-top-right {
-    top: 8px;
-    right: -20px;
+    top: -12px;
+    right: 40px;
+    animation-delay: 0s;
 }
 
 .sparkle-bottom-left {
-    bottom: 1px;
-    left: -30px;
+    bottom: 50px;
+    left: 65px;
+    animation-delay: 0.75s;
+}
+
+.sparkle.active {
+    opacity: 1;
+    animation-play-state: running;
 }
 
 /* focus outlines for accessibility */
@@ -238,4 +247,55 @@ body.embedded .player {
 /* youTube iframe hidden */
 #youtube-player {
     display: none;
+}
+
+/* --- responsive adjustments --- */
+
+/* hide background when inside an iframe */
+body.embedded .background {
+    display: none;
+}
+
+/* icons shrinking and adjusting layout for smaller screen sizes */
+@media (max-width: 400px) {
+    .controls img {
+        width: 20px;
+    }
+    
+    .controls {
+        gap: 50px;
+    }
+    
+    .comfy-gif {
+        width: 80px;
+    }
+
+    .datetime {
+        font-size: 2vw;
+    }
+
+    .widget {
+        max-width: 320px;
+        padding: 10px;
+    }
+
+    .player {
+        padding: 5% 1%;
+    }
+}
+
+/* allow widget to be smaller than its original size */
+.widget-container {
+    min-width: 0;
+    min-height: 0;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+}
+
+.comfy-gif,
+.bg-img,
+.volume-slider {
+    max-width: 100%;
+    height: auto;
 }

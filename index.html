@@ -8,8 +8,8 @@
         <!-- fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
         
-        <!-- styles -->
         <link rel="stylesheet" href="style.css" />
+
     </head>
     <body>
         <!-- background img -->
@@ -46,8 +46,12 @@
                             <img src="icons/play.png" alt="play" id="play-icon" />
                         </button>
                         <!-- sparkle effects -->
-                        <img src="icons/sparkle.png" alt="sparkle" class="sparkle sparkle-top-right" />
-                        <img src="icons/sparkle.png" alt="sparkle" class="sparkle sparkle-bottom-left" />
+                        <div class="sparkle-container sparkle-top-right">
+                            <img src="icons/sparkle.png" alt="sparkle" class="sparkle" />
+                        </div>
+                        <div class="sparkle-container sparkle-bottom-left">
+                            <img src="icons/sparkle.png" alt="sparkle" class="sparkle" />
+                        </div>
                     </div>
 
                     <button id="next">
@@ -64,12 +68,14 @@
         <div id="youtube-player"></div>
 
         <!-- scripts -->
-        <script src="script.js"></script>
         <script>
             // check if the page is embedded and add embedded class to body
             if (window.self !== window.top) {
                 document.body.classList.add('embedded');
             }
         </script>
+        <script src="script.js"></script>
+        <script src="https://www.youtube.com/iframe_api"></script>
+
     </body>
 </html>
