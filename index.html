@@ -74,6 +74,7 @@
             // check if the page is embedded and add embedded class to body
             if (window.self !== window.top) {
                 document.body.classList.add('embedded');
+                void document.body.offsetHeight;
             }
         </script>
         <script src="script.js"></script>

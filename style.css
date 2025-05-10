@@ -4,8 +4,9 @@ body, html {
     padding: 0;
     font-family: 'Fredoka', sans-serif;
     height: 100%;
+    max-height: 100%;
     background: #dae6ff;
-    overflow: hidden;
+    overflow: auto;
     background-image: url('assets/background_img.jpg');
     background-size: cover;
     background-position: center;
@@ -46,6 +47,24 @@ body.embedded .background {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* allow widget to be smaller than its original size */
+.widget-container {
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+body.embedded .widget-container {
+    padding: 0 8px;
 }
 
 body.embedded .widget {
@@ -242,11 +261,6 @@ body.embedded .player {
     pointer-events: none;
 }
 
-.sparkle.sparkling {
-    display: block;
-    animation: sparkle-animation 1.5s infinite ease-in-out;
-}
-
 .sparkle-top-right {
     top: -12px;
     right: 40px;
@@ -292,7 +306,7 @@ body.embedded .player {
     }
 
     .datetime {
-        font-size: clamp(1rem, 2vw, 2rem);
+        font-size: clamp(1rem, 2.5vw, 2rem);
         flex-direction: column;
     }
 
@@ -309,19 +323,21 @@ body.embedded .player {
         height: 20px;
         width: 20px;
     }
-/* allow widget to be smaller than its original size */
-.widget-container {
-    min-width: 0;
-    min-height: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
 
-.comfy-gif,
-.bg-img,
-.volume-slider {
-    max-width: 100%;
-    height: auto;
-}
+    .sparkle-bottom-left {
+        left: 30px;
+    }
+
+    .sparkle-top-right {
+        right: 30px;
+    }
+
+    #play img {
+        width: 36px;
+    }
+
+    #prev img,
+    #next img {
+        width: 24px;
+    }
 }
