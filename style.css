@@ -13,11 +13,6 @@ body, html {
     background-repeat: no-repeat;
 }
 
-body.embedded {
-    background: none !important;
-    background-image: none !important;
-}
-
 /* blurred background */
 .background {
     position: fixed;
@@ -30,11 +25,6 @@ body.embedded {
     filter: blur(6px);
     background-position: center;
     z-index: -2;
-}
-
-body.embedded .background {
-    display: none !important;
-    background-image: none !important;
 }
 
 /* responsive widget */
@@ -62,41 +52,6 @@ body.embedded .background {
     align-items: center;
     padding: 10px;
     box-sizing: border-box;
-}
-
-body.embedded .widget-container {
-    padding: 0 8px;
-}
-
-body.embedded .widget {
-    box-sizing: border-box;
-    max-width: 400px;
-    width: 100%;
-    padding: 10px;
-    margin: 0 auto;
-    border-radius: 24px;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-body.embedded .comfy-gif {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 24px;
-    display: block;
-    transition: opacity 1s ease-in-out;
-}
-
-body.embedded .gif-container {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    border-radius: 24px;
-    overflow: hidden;
-    position: relative;
 }
 
 /* gif container w rounded corners */
@@ -146,14 +101,6 @@ body.embedded .gif-container {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-}
-
-body.embedded .player {
-    width: 100%;
-    max-width: 100%;
-    padding: 10px;
-    background-color: #fff; /* solid background for widget */
-    box-shadow: 0 2px 8px rgba(35, 55, 77, 0.15); /* keep shadow for the player */
 }
 
 /* progress bar */
@@ -243,15 +190,15 @@ body.embedded .player {
 @keyframes sparkle-animation {
     0% {
         opacity: 0.5;
-        transform: scale(0.6);
+        transform: scale(0.6) translateY(0);
     }
     50% {
         opacity: 1;
-        transform: scale(0.8);
+        transform: scale(0.8) translateY(-10px);
     }
     100% {
         opacity: 0.5;
-        transform: scale(0.6);
+        transform: scale(0.6) translateY(0);
     }
 }
 
@@ -263,8 +210,8 @@ body.embedded .player {
 
 .sparkle {
     position: absolute;
-    width: 2px;
-    height: 20px;
+    width: clamp(1px, 0.3vw, 3px);
+    height: clamp(10px, 3vw, 30px);
     background-color: #dae6ff;
     border-radius: 50%;
     opacity: 0;
@@ -352,4 +299,59 @@ body.embedded .player {
     #next img {
         width: 24px;
     }
+}
+
+/* embedded view */
+
+body.embedded {
+    background: none !important;
+    background-image: none !important;
+}
+
+body.embedded .background {
+    display: none !important;
+    background-image: none !important;
+}
+
+body.embedded .widget-container {
+    padding: 0 8px;
+}
+
+body.embedded .comfy-gif {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 24px;
+    display: block;
+    transition: opacity 1s ease-in-out;
+}
+
+body.embedded .widget {
+    box-sizing: border-box;
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 24px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.embedded .gif-container {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+}
+
+body.embedded .player {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    background-color: #fff; /* solid background for widget */
+    box-shadow: 0 2px 8px rgba(35, 55, 77, 0.15); /* keep shadow for the player */
 }
