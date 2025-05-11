@@ -284,8 +284,8 @@ body, html {
     }
 
     body.embedded .sparkle-top-right {
-        top: 8%; 
-        right: 8%; 
+        top: 10%; 
+        right: 4%; 
     }
 
     body.embedded .sparkle-bottom-left {
