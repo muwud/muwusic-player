@@ -12,16 +12,6 @@
 
     </head>
     <body>
-        <script>
-            // check if the page is embedded and add embedded class to body
-            document.addEventListener("DOMContentLoaded", function () {
-                if (window.self !== window.top) {
-                    document.body.classList.add('embedded');
-                } else {
-                    document.body.style.backgroundImage = "url('assets/background_img.jpg')";
-                }
-            });
-        </script>
 
         <!-- background img -->
         <div class="background"></div>
@@ -79,6 +69,20 @@
 
         <!-- hidden youtube iframe -->
         <div id="youtube-player"></div>
+
+            <script>
+            // check if the page is embedded and add embedded class to body
+            document.addEventListener("DOMContentLoaded", function () {
+                if (window.self !== window.top) {
+                    document.body.classList.add('embedded');
+                    document.body.style.background = "none";
+                    document.body.style.backgroundImage = "none";
+                    document.body.style.backgroundColor = "transparent";
+                } else {
+                    document.body.style.backgroundImage = "url('assets/background_img.jpg')";
+                }
+            });
+            </script>
 
         <script src="script.js"></script>
         <script src="https://www.youtube.com/iframe_api"></script>
