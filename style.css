@@ -211,7 +211,7 @@ body.embedded .player {
 .controls button {
     background: none;
     border: none;
-    padding: 8px 16px;
+    padding: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -271,13 +271,13 @@ body.embedded .player {
 }
 
 .sparkle-top-right {
-    top: -12px;
+    top: -15px;
     right: 40px;
     animation-delay: 0s;
 }
 
 .sparkle-bottom-left {
-    bottom: 50px;
+    bottom: 55px;
     left: 65px;
     animation-delay: 0.75s;
 }
