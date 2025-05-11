@@ -257,6 +257,7 @@ body.embedded {
 
 body.embedded .background {
     display: none !important;
+    background: none !important;
     background-image: none !important;
     background-color: transparent !important;
 }
@@ -323,6 +324,12 @@ body.embedded .sparkle-bottom-left {
 body.embedded .sparkle-top-right {
     top: -25px;
     right: 30px;
+}
+
+/* embedded background test */
+body.embedded .widget,
+body.embedded .gif-container {
+    background: none !important;
 }
 
 /* --- responsive adjustments --- */
