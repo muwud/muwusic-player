@@ -69,12 +69,13 @@
         <!-- hidden youtube iframe -->
         <div id="youtube-player"></div>
 
-        <!-- scripts -->
         <script>
             // check if the page is embedded and add embedded class to body
             if (window.self !== window.top) {
                 document.body.classList.add('embedded');
                 void document.body.offsetHeight;
+            } else {
+                document.body.style.backgroundImage = "url('assets/background_img.jpg')";
             }
         </script>
         <script src="script.js"></script>

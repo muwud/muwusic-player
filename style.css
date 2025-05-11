@@ -303,7 +303,7 @@ body.embedded .player {
 /* icons shrinking and adjusting layout for smaller screen sizes */
 @media (max-width: 300px) {
     .controls img {
-        width: 20px;
+        width: 40px;
     }
     
     .controls {
@@ -315,7 +315,7 @@ body.embedded .player {
     }
 
     .datetime {
-        font-size: clamp(1.2rem, 2vw, 1.5rem);
+        font-size: clamp(1.3rem, 2vw, 1.4rem);
         flex-direction: column;
         align-items: flex-start;
     }
