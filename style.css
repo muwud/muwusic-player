@@ -283,6 +283,16 @@ body, html {
         width: 40px;
     }
 
+    body.embedded .sparkle-top-right {
+        top: 8%; 
+        right: 8%; 
+    }
+
+    body.embedded .sparkle-bottom-left {
+        bottom: 15%;  
+        left: 8%; 
+    }
+
     #play img {
         width: 36px;
     }
@@ -363,10 +373,10 @@ body.embedded .sparkle {
 /* position fixes */
 body.embedded .sparkle-bottom-left {
     bottom: 45px;
-    left: 55px;
+    left: 60px;
 }
 
 body.embedded .sparkle-top-right {
     top: -25px;
-    right: 25px;
+    right: 30px;
 }
