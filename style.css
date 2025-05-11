@@ -363,13 +363,13 @@ body.embedded .sparkle-top-right {
     }
 
     body.embedded .sparkle-top-right {
-        top: -25px;
+        top: -20px;
         right: 25px;
     }
 
     body.embedded .sparkle-bottom-left {
         bottom: 45px;
-        left: 50px; 
+        left: 45px; 
     }
 
     #play img {
