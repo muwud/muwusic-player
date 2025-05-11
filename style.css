@@ -210,8 +210,8 @@ body, html {
 
 .sparkle {
     position: fixed;
-    width: clamp(1px, 0.3vw, 3px);
-    height: clamp(10px, 3vw, 30px);
+    width: clamp(10px, 1vw, 25px);
+    height: clamp(10px, 2vw, 40px);
     background-color: #dae6ff;
     border-radius: 50%;
     opacity: 0;
