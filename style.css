@@ -209,7 +209,7 @@ body, html {
 }
 
 .sparkle {
-    position: absolute;
+    position: fixed;
     width: clamp(1px, 0.3vw, 3px);
     height: clamp(10px, 3vw, 30px);
     background-color: #dae6ff;
@@ -281,6 +281,11 @@ body, html {
     .player input[type="range"]::-moz-range-thumb {
         height: 40px;
         width: 40px;
+    }
+
+    .sparkle {
+        width: 2px;
+        height: 20px;
     }
 
     .sparkle-bottom-left {
