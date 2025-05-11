@@ -283,17 +283,35 @@ body, html {
         width: 40px;
     }
 
-    .sparkle {
-        width: 1px;
-        height: 10px;
+    body:not(.embedded) .sparkle {
+        width: 25px;
+        height: 25px;
     }
 
-    .sparkle-bottom-left {
+    body.embedded .sparkle {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* position fixes */
+    body:not(.embedded) .sparkle-bottom-left {
         left: 12px;
+        bottom: 12px;
     }
 
-    .sparkle-top-right {
+    body.embedded .sparkle-bottom-left {
+        left: 6px;
+        bottom: 6px;
+    }
+
+    body:not(.embedded) .sparkle-top-right {
         right: 12px;
+        top: 12px;
+    }
+
+    body.embedded .sparkle-top-right {
+        right: 6px;
+        top: 6px;
     }
 
     #play img {
