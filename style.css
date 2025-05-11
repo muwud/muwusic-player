@@ -209,13 +209,14 @@ body, html {
 }
 
 .sparkle {
-    position: fixed;
+    position: absolute;
     width: clamp(10px, 1vw, 25px);
     height: clamp(10px, 2vw, 40px);
     background-color: #dae6ff;
     border-radius: 50%;
     opacity: 0;
     pointer-events: none;
+    z-index: 2;
 }
 
 .sparkle-top-right {
@@ -362,13 +363,13 @@ body.embedded .sparkle-top-right {
     }
 
     body.embedded .sparkle-top-right {
-        top: 4%; 
-        right: 8%; 
+        top: -25px;
+        right: 25px;
     }
 
     body.embedded .sparkle-bottom-left {
-        bottom: 12%;  
-        left:10%; 
+        bottom: 45px;
+        left: 50px; 
     }
 
     #play img {
