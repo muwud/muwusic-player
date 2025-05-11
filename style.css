@@ -246,63 +246,6 @@ body, html {
     display: none;
 }
 
-/* --- responsive adjustments --- */
-
-/* icons shrinking and adjusting layout for smaller screen sizes */
-@media (max-width: 300px) {
-    .controls img {
-        width: 40px;
-    }
-    
-    .controls {
-        gap: 40px;
-    }
-    
-    .comfy-gif {
-        width: 100%;
-    }
-
-    .datetime {
-        font-size: clamp(1.3rem, 2vw, 1.4rem);
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .widget {
-        max-width: 300px;
-        padding: 10px;
-    }
-
-    .player {
-        padding: 5% 1%;
-    }
-
-    .player input[type="range"]::-webkit-slider-thumb,
-    .player input[type="range"]::-moz-range-thumb {
-        height: 40px;
-        width: 40px;
-    }
-
-    body.embedded .sparkle-top-right {
-        top: 10%; 
-        right: 12%; 
-    }
-
-    body.embedded .sparkle-bottom-left {
-        bottom: 15%;  
-        left: 8%; 
-    }
-
-    #play img {
-        width: 36px;
-    }
-
-    #prev img,
-    #next img {
-        width: 24px;
-    }
-}
-
 /* embedded view */
 
 body.embedded {
@@ -379,4 +322,61 @@ body.embedded .sparkle-bottom-left {
 body.embedded .sparkle-top-right {
     top: -25px;
     right: 30px;
+}
+
+/* --- responsive adjustments --- */
+
+/* icons shrinking and adjusting layout for smaller screen sizes */
+@media (max-width: 300px) {
+    .controls img {
+        width: 40px;
+    }
+    
+    .controls {
+        gap: 40px;
+    }
+    
+    .comfy-gif {
+        width: 100%;
+    }
+
+    .datetime {
+        font-size: clamp(1.3rem, 2vw, 1.4rem);
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .widget {
+        max-width: 300px;
+        padding: 10px;
+    }
+
+    .player {
+        padding: 5% 1%;
+    }
+
+    .player input[type="range"]::-webkit-slider-thumb,
+    .player input[type="range"]::-moz-range-thumb {
+        height: 40px;
+        width: 40px;
+    }
+
+    body.embedded .sparkle-top-right {
+        top: 10%; 
+        right: 12%; 
+    }
+
+    body.embedded .sparkle-bottom-left {
+        bottom: 15%;  
+        left: 8%; 
+    }
+
+    #play img {
+        width: 36px;
+    }
+
+    #prev img,
+    #next img {
+        width: 24px;
+    }
 }
