@@ -1,230 +1,350 @@
-/* main body styling */
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
-  font-family: 'comic sans ms', cursive, sans-serif;
+/* general reset and styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka', sans-serif;
+    height: 100%;
+    max-height: 100%;
+    background: #dae6ff;
+    overflow: auto;
+    background-image: url('assets/background_img.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-/* styling for embedded mode */
 body.embedded {
-  background: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden;
+    background: none;
+    background-image: none;
 }
 
-/* overall widget container */
-.widget-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+/* blurred background */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/background_img.jpg');
+    background-size: 30%;
+    filter: blur(6px);
+    background-position: center;
+    z-index: -2;
 }
 
-/* widget styling */
+body.embedded .background {
+    display: none;
+}
+
+/* responsive widget */
 .widget {
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  box-sizing: border-box;
+    width: 100%;
+    max-width: 500px; /* larger on site, scales down */
+    margin: auto;
+    padding: 20px;
+    border-radius: 24px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* smaller size when embedded */
+/* allow widget to be smaller than its original size */
+.widget-container {
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+body.embedded .widget-container {
+    padding: 0 8px;
+}
+
 body.embedded .widget {
-  max-width: 400px;
-  margin: 10px auto;
-  padding: 10px;
-  background-color: transparent;
-  box-shadow: none;
+    box-sizing: border-box;
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 24px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* gif container wraps the gif and overlay */
+body.embedded .comfy-gif {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 24px;
+    display: block;
+    transition: opacity 1s ease-in-out;
+}
+
+body.embedded .gif-container {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* gif container w rounded corners */
 .gif-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
 }
 
-/* comfy gif image */
 .comfy-gif {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  object-fit: contain;
-  border-radius: 24px;
-  display: block;
-  transition: opacity 1s ease-in-out;
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    display: block;
+    transition: opacity 1s ease-in-out;
 }
 
-/* full view has a larger gif */
-body:not(.embedded) .comfy-gif {
-  max-width: 500px;
-}
-
-/* overlay text (day and date) over gif */
+/* date/time overlay */
 .datetime {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  color: white;
-  font-size: 1rem;
-  text-align: center;
-  text-shadow: 1px 1px 2px #000;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    display: flex;
+    gap: 10px;
+    color: rgb(243, 249, 255);
+    text-shadow: 1px 1px 5px rgb(107, 106, 160);
+    font-size: 2rem;
+    font-family: 'Fredoka', sans-serif;
+    flex-wrap: wrap;
 }
 
-/* smaller overlay text in embedded view */
-body.embedded .datetime {
-  font-size: 0.9rem;
-  top: 10px;
-  left: 10px;
-  right: 10px;
+.datetime #date,
+.datetime #time {
+    margin: 2px 0;
 }
 
-/* music player bar */
+/* player section */
 .player {
-  width: 100%;
-  background-color: #ffccf9;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
-  gap: 10px;
+    background-color: rgb(243, 249, 255);
+    border-radius: 24px;
+    width: 100%;
+    padding: 34px 2px;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(35, 55, 77, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-/* player controls (prev/play/next) */
-.player .controls button {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+body.embedded .player {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    background-color: #fff; /* solid background for widget */
+    box-shadow: 0 2px 8px rgba(35, 55, 77, 0.15); /* keep shadow for the player */
 }
 
-.player .controls button:hover {
-  background-color: #f0f0f0;
+/* progress bar */
+#progress-bar {
+    height: 6px;
+    width: 80%;
+    margin: 8px 0;
 }
 
-/* track info text */
-.player .track-info {
-  flex: 1;
-  text-align: center;
-  padding: 0 10px;
-  font-size: 0.9rem;
-  color: #333;
+#volume {
+    width: 40%;
+    height: 4px;
+    margin: 8px 0;
 }
 
-/* volume and progress sliders */
 .player input[type="range"] {
-  -webkit-appearance: none;
-  width: 100px;
-  height: 4px;
-  background: #fff;
-  border-radius: 2px;
-  margin: 0 8px;
-  cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #bfccf0;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* range track styling for firefox */
-.player input[type="range"]::-moz-range-track {
-  height: 4px;
-  background: #fff;
-  border-radius: 2px;
-}
-
-/* custom dot thumb */
 .player input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 64px;
-  width: 64px;
-  background: url('icons/dot.png') no-repeat center;
-  background-size: contain;
-  border: none;
-  cursor: pointer;
+    -webkit-appearance: none;
+    height: 64px;
+    width: 64px;
+    background: url('icons/dot.png') no-repeat center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
 }
 
 .player input[type="range"]::-moz-range-thumb {
-  height: 64px;
-  width: 64px;
-  background: url('icons/dot.png') no-repeat center;
-  background-size: contain;
-  border: none;
-  cursor: pointer;
+    height: 64px;
+    width: 64px;
+    background: url('icons/dot.png') no-repeat center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
 }
 
-/* compact styling for embedded view */
-body.embedded .player {
-  background-color: #fff;
-  padding: 6px;
-  border-radius: 8px;
-  box-shadow: none;
-}
-
-body.embedded .player .controls button {
-  width: 28px;
-  height: 28px;
-  font-size: 14px;
-}
-
-body.embedded .player .track-info {
-  font-size: 0.8rem;
-}
-
-/* responsive scaling for smaller screens */
-@media (max-width: 480px) {
-  .widget {
-    padding: 12px;
-    gap: 12px;
-  }
-
-  .comfy-gif {
-    max-width: 100%;
-  }
-
-  .datetime {
-    font-size: 0.85rem;
-  }
-
-  .player {
-    flex-direction: column;
+/* controls area */
+.controls {
+    display: flex;
     align-items: center;
-    gap: 8px;
-  }
+    justify-content: center;
+    gap: 80px;
+    margin-bottom: 10px;
+    position: relative;
+}
 
-  .player .controls button {
+.controls button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* icon sizes */
+.controls img {
     width: 28px;
-    height: 28px;
-    font-size: 14px;
-  }
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
 
-  .player .track-info {
-    font-size: 0.8rem;
-  }
+.controls img:hover {
+    opacity: 1;
+}
 
-  .player input[type="range"]::-webkit-slider-thumb,
-  .player input[type="range"]::-moz-range-thumb {
+#play img {
+    width: 53px;
+}
+
+#prev img,
+#next img {
+    width: 35px;
+}
+
+/* sparkle animations */
+@keyframes sparkle-animation {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.6);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(0.6);
+    }
+}
+
+.sparkle-container {
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sparkle {
+    position: absolute;
+    width: 2px;
     height: 20px;
-    width: 20px;
-  }
+    background-color: #dae6ff;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
 
-  .player input[type="range"] {
-    width: 80px;
-  }
+.sparkle-top-right {
+    top: -12px;
+    right: 40px;
+    animation-delay: 0s;
+}
+
+.sparkle-bottom-left {
+    bottom: 50px;
+    left: 65px;
+    animation-delay: 0.75s;
+}
+
+.sparkle.active {
+    opacity: 1;
+    animation-play-state: running;
+}
+
+/* focus outlines for accessibility */
+.player input[type="range"]:focus,
+.controls button:focus {
+    outline: 2px dashed #bfccf0;
+}
+
+/* youTube iframe hidden */
+#youtube-player {
+    display: none;
+}
+
+/* --- responsive adjustments --- */
+
+/* icons shrinking and adjusting layout for smaller screen sizes */
+@media (max-width: 300px) {
+    .controls img {
+        width: 20px;
+    }
+    
+    .controls {
+        gap: 20px;
+    }
+    
+    .comfy-gif {
+        width: 100%;
+    }
+
+    .datetime {
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .widget {
+        max-width: 300px;
+        padding: 10px;
+    }
+
+    .player {
+        padding: 5% 1%;
+    }
+
+    .player input[type="range"]::-webkit-slider-thumb {
+        height: 20px;
+        width: 20px;
+    }
+
+    .sparkle-bottom-left {
+        left: 30px;
+    }
+
+    .sparkle-top-right {
+        right: 30px;
+    }
+
+    #play img {
+        width: 36px;
+    }
+
+    #prev img,
+    #next img {
+        width: 24px;
+    }
 }
