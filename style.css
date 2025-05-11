@@ -362,13 +362,13 @@ body.embedded .sparkle-top-right {
     }
 
     body.embedded .sparkle-top-right {
-        top: 10%; 
-        right: 12%; 
+        top: 4%; 
+        right: 8%; 
     }
 
     body.embedded .sparkle-bottom-left {
-        bottom: 15%;  
-        left: 8%; 
+        bottom: 12%;  
+        left:10%; 
     }
 
     #play img {
