@@ -363,10 +363,10 @@ body.embedded .sparkle {
 /* position fixes */
 body.embedded .sparkle-bottom-left {
     bottom: 45px;
-    left: 65px;
+    left: 45px;
 }
 
 body.embedded .sparkle-top-right {
     top: -25px;
-    right: 40px;
+    right: 25px;
 }
