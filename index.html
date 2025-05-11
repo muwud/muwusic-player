@@ -71,13 +71,14 @@
 
         <script>
             // check if the page is embedded and add embedded class to body
-            if (window.self !== window.top) {
-                document.body.classList.add('embedded');
-                void document.body.offsetHeight;
-            } else {
-                document.body.style.backgroundImage = "url('assets/background_img.jpg')";
-            }
-        </script>
+            document.addEventListener("DOMContentLoaded", function () {
+                if (window.self !== window.top) {
+                    document.body.classList.add('embedded');
+                } else {
+                    document.body.style.backgroundImage = "url('assets/background_img.jpg')";
+                }
+            });
+</script>
         <script src="script.js"></script>
         <script src="https://www.youtube.com/iframe_api"></script>
 

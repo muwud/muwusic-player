@@ -284,8 +284,8 @@ body, html {
     }
 
     .sparkle {
-        width: 2px;
-        height: 20px;
+        width: 1px;
+        height: 10px;
     }
 
     .sparkle-bottom-left {
@@ -311,11 +311,13 @@ body, html {
 body.embedded {
     background: none !important;
     background-image: none !important;
+    background-color: transparent !important;
 }
 
 body.embedded .background {
     display: none !important;
     background-image: none !important;
+    background-color: transparent !important;
 }
 
 body.embedded .widget-container {
